@@ -1,5 +1,5 @@
 function hello(name) {
-            console.log(name);
+  console.log(name);
 }
 
 hello("你好");
