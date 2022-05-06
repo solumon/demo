@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试音频</title>
+    <style>
+        .container {
+            width: 1200px;
+            height: 600px;
+            background: bisque;
+        }
+
+        .video {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video controls preload  class="video">
+            <source src="https://qlib-nginx.up366demo.cn/qlib-files/questions/2857/2022/0414/627E181946EB3A0575A549E87A5AA56F.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        let el = document.querySelector('.video');
+        /// 资源事件
+        el.ondurationchange = function (e) {
+            console.log('总时长更新：', e.target.duration)
+        }
+        el.onloadedmetadata = function (e) {
+            console.log('总时长：', e.target.duration);
+        }
+        el.addEventListener('canplay', (e) => {
+            console.log('视频已经准备就绪')
+        })
+        el.ontimeupdate = function (e) {
+            console.log('当前播放时长：',e.target.currentTime)
+        }
+        el.onprogress = function (e) {
+            console.log('onprogress', e.target.buffered)
+        }
+
+    </script>
+</body>
+</html>
